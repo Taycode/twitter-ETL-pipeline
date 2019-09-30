@@ -1,7 +1,7 @@
 import tweepy
-from time import sleep
 from json import dumps
 from kafka import KafkaProducer
+
 
 consumer_key = 'BSu45Bjg7VnIpdLh54wUHMuCx'
 consumer_secret = 'Uy8wHfdDOqWzYwRbqeVOPCmpjHHvxcGQwtQ7kexInOihqM7qMr'
@@ -20,6 +20,7 @@ api = tweepy.API(auth)
 class MyStreamListener(tweepy.StreamListener):
 
     def on_status(self, status):
+
         data = {
             'id': status.id_str,
             'tweet': status.text,
